@@ -11,6 +11,7 @@ const port = process.env.PORT || config.port;
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(require('./routes/posts'));
 
 mongoose.connect(config.dbURL, config.dbOptions);
 mongoose.Promise = global.Promise;
