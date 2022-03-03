@@ -1,0 +1,10 @@
+mevn-app/client/.DS_Store
+mevn-app/client/node_modules/
+mevn-app/client/dist/
+mevn-app/client/npm-debug.log*
+mevn-app/client/yarn-debug.log*
+mevn-app/client/yarn-error.log*
+mevn-app/client/test/unit/coverage/
+
+mevn-app/server/node_modules/
+.idea/
