@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/post-model');
 
-const routerPost = router.post('/posts', (req, res) => {
+
+router.post('/posts', (req, res) => {
     const post = new Post({
         title: req.body.title,
         description: req.body.description
@@ -18,4 +19,13 @@ const routerPost = router.post('/posts', (req, res) => {
     });
 });
 
-module.exports = routerPost;
+router.get('/posts', (req, res) => {
+    Post.find({}, 'title description', (err, posts) => {
+        if(err) res.sendStatus(500);
+        else res.send({ posts })
+    }).sort({ _id: -1 });
+});
+
+module.exports = router;
+
+
