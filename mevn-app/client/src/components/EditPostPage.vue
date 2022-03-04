@@ -42,7 +42,7 @@
       },
       async editPost() {
         if(this.post.title !== '' && this.post.description !== '') {
-          await PostService.updatePost({
+          await PostsService.updatePost({
             id: this.$route.params.id,
             title: this.post.title,
             description: this.post.description
