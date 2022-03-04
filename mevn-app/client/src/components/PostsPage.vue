@@ -17,6 +17,13 @@
             <tr v-for="(post, idx) in posts" :key="post.title">
               <td>{{post.title}}</td>
               <td>{{post.description}}</td>
+              <td>
+                <router-link
+                  :to="{ name: 'EditPost', params: { id: post._id }}">
+                Edit post</router-link>
+                <button class="btn btn-danger btn-sm"
+                        @click="removePost(post._id)">Delete</button>
+              </td>
             </tr>
           </table>
         </section>
@@ -44,6 +51,10 @@
       async getPosts() {
         const res = await PostsService.fetchPosts();
         this.posts = res.data.posts;
+      },
+      async removePost(val) {
+        await PostsService.deletePost(val);
+        await this.getPosts();
       }
     },
     mounted() {
